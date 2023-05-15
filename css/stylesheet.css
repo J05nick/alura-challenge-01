@@ -399,8 +399,6 @@ body{
     .main-box{
         width: 65%;
         height: 100%;
-        border-style: solid;
-        border-color: red;
         display: flex;
         flex-direction: column;
     }
@@ -509,8 +507,8 @@ body{
             }
 
         .result-box{
-            border-style: solid;
-            border-color: red;
+            /*border-style: solid;
+            border-color: red;*/
             width: 30%;
             height: 100%;
             background-color: white;
