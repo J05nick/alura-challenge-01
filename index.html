@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width height=device-height ">
+    <title>Challenge #1</title>
+<!--    <link rel="stylesheet" href="css/reset.css">-->
+    <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+<body >
+    <div class="main-container">
+        <div class="menu">
+            <img alt="alura logo" id="logo" src="img/alura-logo.png">
+        </div>
+
+        <div class="main-box">
+<!--            <label for="text-input"></label>-->
+            <input type="text" id="text-input" class="text-input" placeholder="Ingrese el texto aquí" >
+            <div class="buttons">
+                <button id="encrypt-button" onclick="encrypt()">Encriptar</button>
+                <button id="decrypt-button" onclick="decrypt()">Desencriptar</button>
+            </div>
+        </div>
+
+        <div class="result-nothing" id="result-nothing">
+            <img class="munheco" alt="munheco alura" src="img/munheco.svg">
+            <p class="nothing-text-1">Ningún mensaje fue encontrado</p>
+            <p class="nothing-text-2">Ingrese el texto que desees encriptar o desencriptar.</p>
+        </div>
+
+        <div class="result-box" id="result-box">
+            <div id="result-text" class="result-text"></div>
+            <div id="copy-div" class="copy-div">
+                <button id="copy-button" class="copy-button" onclick="textcopy()">Copiar</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    function encrypt(){
+        let initial = document.getElementById("text-input").value.toLowerCase();
+        let finish = "";
+        for(let i=0;i<initial.length;i++){
+            if(initial[i] === 'a'){
+                finish += "ai";
+            }else if(initial[i] === 'e'){
+                finish += "enter";
+            }else if(initial[i] === 'i'){
+                finish += "imes";
+            }else if(initial[i] === 'o'){
+                finish += "ober";
+            }else if(initial[i] === 'u'){
+                finish += "ufat";
+            }else{
+                finish += initial[i];
+            }
+        }
+        document.getElementById("result-text").innerHTML = finish;
+        document.getElementById("copy-button").style.display = "block";
+        document.getElementById("result-nothing").style.display = "none";
+        document.getElementById("result-box").style.display = "flex";
+    }
+
+    function decrypt(){
+        let initial = document.getElementById("text-input").value.toLowerCase();
+        let finish = initial.replace(/ai/g,'a');
+        finish = finish.replace(/enter/g,'e');
+        finish = finish.replace(/imes/g,'i');
+        finish = finish.replace(/ober/g,'o');
+        finish = finish.replace(/ufat/g,'u');
+        document.getElementById("result-text").innerHTML = finish;
+        document.getElementById("copy-button").style.display = "block";
+        document.getElementById("result-nothing").style.display = "none";
+        document.getElementById("result-box").style.display = "flex";
+    }
+
+    function textcopy(){
+        let copyText = document.getElementById("result-text").innerHTML;
+        console.log(copyText);
+        navigator.clipboard.writeText(copyText);
+    }
+
+</script>
+</html>
